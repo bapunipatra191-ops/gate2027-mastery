@@ -434,6 +434,60 @@ footer {
     transform: translateY(0);
 }
 
+/* Form & Messages */
+.subscription-form {
+    margin: 2rem auto;
+    display: flex;
+    max-width: 500px;
+    gap: 1rem;
+}
+
+.subscription-form input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border-radius: 30px;
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    outline: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.subscription-form input::placeholder {
+    color: var(--text-muted);
+}
+
+.messages-container {
+    position: fixed;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 600px;
+}
+
+.alert {
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.alert.success {
+    border-color: rgba(16, 185, 129, 0.5);
+    color: #10b981;
+}
+
+.alert.warning, .alert.error {
+    border-color: rgba(239, 68, 68, 0.5);
+    color: #ef4444;
+}
+
 /* Responsive */
 @media (max-width: 992px) {
     .hero-section {

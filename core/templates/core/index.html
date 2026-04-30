@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,13 +9,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
 </head>
 <body>
 
     <!-- Background Elements -->
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
+
+    {% if messages %}
+        <div class="messages-container">
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
 
     <nav class="navbar">
         <div class="logo">GATE<span>2027</span></div>
@@ -46,7 +55,7 @@
         <div class="hero-image-wrapper">
             <!-- Injecting the generated image path dynamically or statically -->
             <div class="glass-panel image-panel">
-                <img src="" id="hero-img" alt="GATE 2027 Preparation Futuristic Workspace">
+                <img src="{% static 'core/images/hero-bg.png' %}" id="hero-img" alt="GATE 2027 Preparation Futuristic Workspace">
                 <div class="overlay-stats">
                     <div class="stat">
                         <span class="stat-num">3+</span>
@@ -124,6 +133,14 @@
         <div class="footer-content glass-card">
             <h2>Start your journey today.</h2>
             <p>Consistency is what transforms average into excellence.</p>
+            
+            <!-- Django Backend Connection Form -->
+            <form method="POST" class="subscription-form">
+                {% csrf_token %}
+                <input type="email" name="email" placeholder="Enter your email for updates" required>
+                <button type="submit" class="btn primary-btn">Subscribe</button>
+            </form>
+
             <div class="social-links">
                 <a href="#">Strategy Guide</a>
                 <a href="#">Syllabus</a>
@@ -133,6 +150,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="{% static 'core/js/script.js' %}"></script>
 </body>
 </html>
