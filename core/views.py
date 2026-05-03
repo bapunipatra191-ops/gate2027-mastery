@@ -48,7 +48,6 @@ def contact_submit(request):
         ContactMessage.objects.create(name=name, email=email, message=message)
         messages.success(request, "Message Sent Successfully")
         return redirect('/')
-
 def buy_plan(request):
     if request.method == "POST":
         name = request.POST['name']
